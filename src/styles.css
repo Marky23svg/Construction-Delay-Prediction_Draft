@@ -43,3 +43,174 @@
 .action-list{list-style:none;margin:0;padding:2px 21px 14px;display:grid;gap:9px}
 .action-list li{display:flex;align-items:flex-start;gap:8px;font-size:10px;color:#5b6779;line-height:1.55}
 .action-icon{display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#edf3ff;color:#2d65d5;flex-shrink:0;margin-top:1px}
+
+/* 1. Fix the brand container padding on mobile */
+@media (max-width: 900px) {
+  .brand {
+    padding: 0 9px 25px; /* Slightly less bottom padding on mobile */
+  }
+}
+
+/* 2. Make the logo box perfectly responsive and fix the icon inside */
+.brand-mark {
+  /* Shrinks smoothly between 32px and 40px */
+  height: clamp(32px, 8vw, 40px); 
+  width: clamp(32px, 8vw, 40px);
+  display: grid;
+  place-items: center;
+  border-radius: 10px; /* Slightly less rounded for smaller sizes */
+  background: #1e3e77;
+  color: white;
+  flex-shrink: 0; /* Prevents the box from squishing horizontally */
+}
+
+/* 3. Force the icon (SVG or image) inside to scale down properly */
+.brand-mark svg, 
+.brand-mark img {
+  width: 55%; 
+  height: 55%;
+  object-fit: contain;
+}
+
+/* 4. Prevent the "ConstructIQ" text from pushing the logo */
+.brand strong {
+  white-space: nowrap; /* Keeps it on one line */
+  font-size: 17px; /* Slightly smaller on mobile to fit */
+}
+
+@media (max-width: 900px) {
+  .brand strong {
+    font-size: 16px; /* Make text smaller so it doesn't wrap */
+  }
+}
+
+/* 1. Give the title breathing room and prevent it from being squished */
+.panel-heading h3 {
+  padding-right: 8px;
+  white-space: normal; /* Allows wrapping if absolutely necessary */
+  line-height: 1.3;
+}
+
+/* 2. Fix the indicator chips (Workforce, Trend, etc.) so they wrap nicely */
+.indicator-chips {
+  display: flex;
+  flex-wrap: wrap; /* Forces chips to the next line if they overflow */
+  gap: 8px;
+  padding: 0 21px 12px;
+}
+
+/* 3. Mobile specific fixes for the Panel Heading */
+@media (max-width: 600px) {
+  /* Stack the title and the Risk Pill vertically on small screens */
+  .panel-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  /* Ensure the pill stays on the left when stacked */
+  .panel-heading .risk-pill {
+    align-self: flex-start;
+  }
+
+  /* Make sure the list items in the reasons section have proper spacing */
+  .reason-list {
+    padding: 0 16px 8px; /* Adjust padding for smaller screens */
+  }
+  
+  .reason-list li {
+    line-height: 1.5;
+    font-size: 11px; /* Slightly larger font for readability on mobile */
+  }
+}
+
+/* =========================================
+   CUSTOM RESPONSIVE FIXES (Add to bottom of CSS)
+   ========================================= */
+
+/* 1. Responsive Brand Logo */
+@media (max-width: 900px) {
+  .brand {
+    padding: 0 9px 25px;
+  }
+}
+
+.brand-mark {
+  height: clamp(32px, 8vw, 40px); 
+  width: clamp(32px, 8vw, 40px);
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #1e3e77;
+  color: white;
+  flex-shrink: 0;
+}
+
+.brand-mark svg, 
+.brand-mark img {
+  width: 55%; 
+  height: 55%;
+  object-fit: contain;
+}
+
+.brand strong {
+  white-space: nowrap;
+  font-size: 17px;
+}
+
+@media (max-width: 900px) {
+  .brand strong {
+    font-size: 16px;
+  }
+}
+
+/* 2. Fix the Risk Classification Panel Heading */
+.panel-heading h3 {
+  line-height: 1.3;
+}
+
+@media (max-width: 600px) {
+  /* Stack the title and the Risk Pill */
+  .panel-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    
+    /* THIS IS THE FIX: Adds padding so it doesn't touch the left edge */
+    padding: 0 21px 15px 21px !important; 
+  }
+  
+  /* Ensure the text container takes full width */
+  .panel-heading > div {
+    width: 100%;
+  }
+
+  /* Ensure the title doesn't get cut off */
+  .panel-heading h3 {
+    white-space: normal !important;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Ensure the chips wrap properly and align with the new padding */
+  .indicator-chips {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100%;
+    padding: 0 21px 15px !important;
+    gap: 8px;
+  }
+  
+  /* Give the reason list proper padding */
+  .reason-list {
+    padding: 0 21px 15px !important;
+  }
+  
+  /* Slightly larger font for readability on mobile */
+  .reason-list li {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
