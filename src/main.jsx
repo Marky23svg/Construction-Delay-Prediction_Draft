@@ -145,7 +145,7 @@ function App() {
 
   return <div className="app-shell">
     <aside className={`sidebar ${mobileNav ? 'sidebar-open' : ''}`}>
-      <div className="brand"><div className="brand-mark"><HardHat size={22}/></div><div><strong>BuildTrack</strong><small>CONSTRUCTION OPS</small></div><button className="icon-btn mobile-close" onClick={() => setMobileNav(false)}><X size={18}/></button></div>
+      <div className="brand"><div className="brand-mark"><HardHat size={22}/></div><div><strong>ConstructIQ</strong><small>CONSTRUCTION OPS</small></div><button className="icon-btn mobile-close" onClick={() => setMobileNav(false)}><X size={18}/></button></div>
       <div className="workspace-label">WORKSPACE</div>
       <nav>{navItems.map(item => <button key={item.label} className={`nav-item ${page===item.label?'active':''}`} onClick={() => {setPage(item.label);setMobileNav(false);}}><item.icon size={18}/><span>{item.label}</span>{item.label==='Delay Predictions' && <span className="nav-count">{highRisk.length}</span>}</button>)}</nav>
       <div className="sidebar-bottom"><div className="help-card"><div className="help-icon"><CircleHelp size={18}/></div><strong>Need a hand?</strong><p>Review the prototype guide to understand how forecasts are calculated.</p><button onClick={() => notify('Forecasts are estimates based on progress history and simple assumptions.')}>View guide <ChevronRight size={14}/></button></div><div className="profile"><div className="avatar">SM</div><div className="profile-info"><strong>Sophia Morga</strong><small>Project Administrator</small></div><MoreHorizontal size={18} className="muted"/></div></div>
